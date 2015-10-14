@@ -1,20 +1,15 @@
 <?php
 
-require 'User.php';
+require 'app/User.php';
+require 'app/Helper.php';
+require 'app/Validator.php';
 
-$joost = new User();
+$rules = ['email' => 'required|email', 'password' => 'require|min:8'];
+$data  = ['email' => 'stas@mail.com', 'password' => '1234stas'];
 
-$joost->setPassword('12345hjkwerw');
-$joost->setEmail('jooo@cc.com');
+$validator = new Validator();
+$validator->validate($rules, $data);
 
-$mike = clone $joost;
 
-$mike->setEmail('mike@mmm.com');
-$mike->setPassword('1231234ds');
-
-var_dump($joost);
-echo '</br>';
-var_dump($mike);
-echo '</br>';
 
 
