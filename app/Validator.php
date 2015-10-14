@@ -8,7 +8,7 @@
 
 class Validator {
 
-    private $errors = [];
+    private $errors = array();
 
     public function validate(Array $data, Array $rules)
     {
@@ -43,5 +43,32 @@ class Validator {
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    private function validateRequired($item, $value, $parameter)
+    {
+        if($value === '' || $value === NULL){
+            $this->errors[$item][] = 'The ' . $item. ' field is required';
+            return false;
+        }
+        return true;
+    }
+
+    private function validateEmail($item, $value, $parameter)
+    {
+        if(! filter_var($value, FILTER_VALIDATE_EMAIL)){
+            $this->errors[$item][] = 'The ' . $item. ' field should be a valid email';
+            return false;
+        }
+        return true;
+    }
+
+    private function validateMin($item, $value, $parameter)
+    {
+        if(strlen($value) >= $parameter == false){
+        $this->errors[$item][] = 'The ' . $item . ' field should be a minimum length '. $parameter;
+        return false;
+    }
+        return true;
     }
 } 

@@ -10,11 +10,10 @@ class User {
 
     private $email;
     private $password;
-    const MINCHARS = 8;
 
     public function login()
     {
-        return 'Login in djfgklgjdlgf...';
+        return 'Login in ...';
     }
 
     public function logout()
@@ -24,10 +23,8 @@ class User {
 
     public function setPassword($string)
     {
-        if($this->validatePassword($string) == false){
-            throw new Exception('The password should be at least ' . self::MINCHARS . ' characters long');
-        }
-        $this->password = hash('sha256', $string);
+       $this->password = $string;
+        return $this;
     }
 
     public function getPassword()
@@ -38,22 +35,14 @@ class User {
 
     public function setEmail($string)
     {
-        if(! filter_var($string, FILTER_VALIDATE_EMAIL)){
-            throw new Exception('Please provide a valid email.');
-        }
         $this->email = $string;
+        return $this;
     }
 
     public function getEmail()
     {
 
         return $this->email;
-    }
-
-    private function validatePassword($string)
-    {
-
-        return strlen($string) < self::MINCHARS ? false : true;
     }
 }
 
