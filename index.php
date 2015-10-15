@@ -1,8 +1,6 @@
 <?php
 
-require 'app/User.php';
 require 'app/Helper.php';
-require 'app/Validator.php';
 
 $rules = ['email' => 'required|email', 'password' => 'required|min:8'];
 $data  = ['email' => 'ddddddddd@xcvv.com', 'password' => '123456789', 'foo' => 'bar'];
