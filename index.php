@@ -1,20 +1,16 @@
 <?php
 
-require 'App/Helper.php';
-require 'App/User.php';
-require 'App/Validator.php';
-require 'Library/User.php';
+require 'autoload.php';
 
 $rules = ['email' => 'required|email', 'password' => 'required|min:8'];
 $data  = ['email' => 'ddddddddd@xcvv.com', 'password' => '123456789', 'foo' => 'bar'];
 
-$validator = new Validator();
+$validator = new Joostvanveen\App\Validator();
 if($validator->validate($data, $rules) == true){
-    $joost = new User($data);
+    $joost = new Joostvanveen\App\User($data);
     var_dump($joost);
 
-    $nick = new Library\User();
-    echo $nick->login();
+    $nick = new Joostvanveen\Library\User();
     var_dump($nick);
 }
 else{

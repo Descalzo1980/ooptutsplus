@@ -6,6 +6,8 @@
  * Time: 23:32
  */
 
+namespace Joostvanveen\App;
+
 class Validator {
 
     private $errors = array();

@@ -5,6 +5,7 @@
  * Date: 13.10.2015
  * Time: 22:07
  */
+namespace Joostvanveen\App;
 
 class User {
 
