@@ -6,7 +6,7 @@
  * Time: 23:32
  */
 
-namespace Joostvanveen\App;
+namespace Acme\App;
 
 class Validator {
 

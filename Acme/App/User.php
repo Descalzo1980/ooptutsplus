@@ -5,14 +5,15 @@
  * Date: 13.10.2015
  * Time: 22:07
  */
-namespace Joostvanveen\App;
+namespace Acme\App;
 
 class User {
 
-    private $email;
-    private $password;
-    private $fillable = ['email', 'password'];
-    private $accessible = ['email', 'password'];
+    protected $email;
+    protected $password;
+    protected $isAdmin = false;
+    protected $fillable = ['email', 'password'];
+    protected $accessible = ['email', 'password'];
 
     public function __construct(Array $params = [])
     {
@@ -54,12 +55,12 @@ class User {
 
     public function login()
     {
-        return 'Login in ...';
+        return 'Login in a user...';
     }
 
     public function logout()
     {
-        return 'Login out...';
+        return 'Logging out';
     }
 
     public function setPassword($string)
