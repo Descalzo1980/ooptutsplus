@@ -2,20 +2,17 @@
 
 require 'autoload.php';
 
-$rules = ['email' => 'required|email', 'password' => 'required|min:8'];
-$data  = ['email' => 'ddddddddd@xcvv.com', 'password' => '123456789', 'foo' => 'bar'];
-
-$validator = new Acme\App\Validator();
-if($validator->validate($data, $rules) == true){
-
-    $joost = new Acme\App\Administrator();
-    echo $joost->login();
-}
-else{
-    var_dump($validator->getErrors());
+//$postRepository = new Acme\App\Repositories\PostJsonRepository();
+$postRepository = new Acme\App\Repositories\PostRssRepository();
+$posts = ($postRepository->All());
+echo '<ul>';
+foreach ($posts as $post) {
+    echo '<li>' . $post->title . '</li>';
 }
 
+echo '</ul>';
 
-
-
+$post = $postRepository->Find(2);
+echo '<h1>' . $post->title . '</h1>';
+echo '<p>' . $post->body . '</p >';
 

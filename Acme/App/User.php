@@ -7,7 +7,7 @@
  */
 namespace Acme\App;
 
-class User {
+abstract class User {
 
     protected $email;
     protected $password;

@@ -12,8 +12,7 @@ class Administrator extends User {
 
     public function login()
     {
-        $massage = parent::login();
-        return $massage . '....And logging the last login date for the administrator';
+        return 'Do stuff' . '....And logging the last login date for the administrator';
     }
 
     public function reportForDuty()
