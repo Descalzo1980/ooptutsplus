@@ -6,7 +6,8 @@ namespace Acme\App;
 
 class Administrator extends User {
 
-    public function __construct(){
+    public function __construct(Array $params = []){
+        parent::__construct($params);
         $this->isAdmin = true;
     }
 

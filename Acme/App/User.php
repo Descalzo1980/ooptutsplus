@@ -9,14 +9,24 @@ namespace Acme\App;
 
 abstract class User {
 
+    use \Acme\App\Traits\Curlable;
+    use \Acme\App\Traits\Accessible;
+
+    protected $facebookid;
     protected $email;
     protected $password;
     protected $isAdmin = false;
-    protected $fillable = ['email', 'password'];
-    protected $accessible = ['email', 'password'];
 
     public function __construct(Array $params = [])
     {
+        $this->fillable[] = 'email';
+        $this->fillable[] = 'password';
+        $this->fillable[] = 'facebookid';
+        $this->accessible[] = 'email';
+        $this->accessible[] = 'password';
+        $this->accessible[] = 'facebookid';
+
+
         if(count($params)){
             foreach($params as $key => $value){
                 $this->$key = $value;
@@ -24,22 +34,12 @@ abstract class User {
         }
     }
 
-    public function __set($name, $value)
-    {
-        if(! in_array($name, $this->fillable)){
-            return false;
-        }
-        if(isset($this->$name)){
-            $this->$name = $value;
-        }
-    }
+    public function getProperty(){}
 
-    public function __get($name)
+    public function getFacebookData()
     {
-        if(! in_array($name, $this->accessible)){
-            return NULL;
-        }
-        return isset($this->$name) ? $this->$name : NULL;
+        $url = 'http://graph.facebook.com/' . $this->facebookid;
+        return json_decode($this->curl($url), true);
     }
 
     public function __toString()
