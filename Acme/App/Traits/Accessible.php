@@ -26,5 +26,5 @@ trait Accessible
         return property_exists($this, $name) ? $this->$name : NULL;
     }
 
-    abstract public function getProperty();
+//    abstract public function getProperty();
 }

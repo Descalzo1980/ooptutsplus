@@ -34,7 +34,7 @@ abstract class User {
         }
     }
 
-    public function getProperty(){}
+//    public function getProperty(){}
 
     public function getFacebookData()
     {
